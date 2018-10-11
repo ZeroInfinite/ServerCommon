@@ -41,6 +41,10 @@ namespace NuGet.Services.Sql
                     TriggerBackgroundRefresh(connectionString, clientCertificateData, logger);
                 }
 
+                logger?.LogInformation("Cached access token for {InitialCatalog} expires in {ExpirationSeconds}s.",
+                    connectionString.Sql.InitialCatalog,
+                    (accessToken.AuthenticationResult.ExpiresOn - DateTimeOffset.Now).TotalSeconds);
+
                 // Returned cached access token.
                 return accessToken.AuthenticationResult;
             }
@@ -154,12 +158,14 @@ namespace NuGet.Services.Sql
             {
                 var start = DateTimeOffset.Now;
                 var accessToken = await AcquireAccessTokenAsync(connectionString, clientCertificateData);
+                var now = DateTimeOffset.Now;
 
                 Debug.Assert(accessToken != null);
 
-                logger?.LogInformation("Refreshed access token for {InitialCatalog} in {ElapsedMilliseconds}.",
+                logger?.LogInformation("Refreshed access token for {InitialCatalog} in {ElapsedMilliseconds}. Token expires in {ExpirationSeconds}s.",
                     connectionString.Sql.InitialCatalog,
-                    (DateTimeOffset.Now - start).TotalMilliseconds);
+                    (now - start).TotalMilliseconds,
+                    (accessToken.AuthenticationResult.ExpiresOn - now).TotalSeconds);
 
                 _cache.AddOrUpdate(connectionString.ConnectionString, accessToken, (k, v) => accessToken);
 
