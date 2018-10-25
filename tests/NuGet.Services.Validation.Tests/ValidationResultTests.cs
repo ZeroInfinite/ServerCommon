@@ -31,7 +31,7 @@ namespace NuGet.Services.Validation.Tests
 
                 var ex = Assert.Throws<ArgumentException>(() => new ValidationResult(status, issues));
                 Assert.Equal("status", ex.ParamName);
-                Assert.Contains("Cannot specify issues if the validation is not in a terminal status.", ex.Message);
+                Assert.Contains("Cannot specify issues if the validation is not in a terminal status.", ex.Message, StringComparison.Ordinal);
             }
 
             [Theory]
@@ -42,7 +42,7 @@ namespace NuGet.Services.Validation.Tests
             {
                 var ex = Assert.Throws<ArgumentException>(() => new ValidationResult(status, NupkgUrl));
                 Assert.Equal("status", ex.ParamName);
-                Assert.Contains("The nupkgUrl can only be provided when the status is Succeeded.", ex.Message);
+                Assert.Contains("The nupkgUrl can only be provided when the status is Succeeded.", ex.Message, StringComparison.Ordinal);
             }
 
             [Fact]

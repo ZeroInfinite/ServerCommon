@@ -93,15 +93,18 @@ namespace NuGet.Services.AzureManagement
 
                 using (var stringReader = new StringReader(configuration))
                 {
-                    var settings = new XmlReaderSettings()
+                    var settings = new XmlReaderSettings
                     {
-                        DtdProcessing = DtdProcessing.Prohibit
+                        DtdProcessing = DtdProcessing.Prohibit,
+                        XmlResolver = null
                     };
 
                     using (var xmlReader = XmlReader.Create(stringReader, settings))
                     {
-                        var xmlConfig = new XmlDocument();
-                        xmlConfig.XmlResolver = null;
+                        var xmlConfig = new XmlDocument
+                        {
+                            XmlResolver = null
+                        };
 
                         xmlConfig.Load(xmlReader);
                         var instancesElement = xmlConfig.GetElementsByTagName("Instances")[0];

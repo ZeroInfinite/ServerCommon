@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
@@ -55,7 +56,8 @@ namespace NuGet.Services.KeyVault.Tests
         public KeyVaultReaderFormatterFacts()
         {
             var mockKeyVault = new Mock<ISecretReader>();
-            mockKeyVault.Setup(x => x.GetSecretAsync(It.IsAny<string>())).Returns((string s) => Task.FromResult(s.ToUpper()));
+            mockKeyVault.Setup(x => x.GetSecretAsync(It.IsAny<string>()))
+                .Returns((string s) => Task.FromResult(s.ToUpper(CultureInfo.InvariantCulture)));
 
             _secretInjector = new SecretInjector(mockKeyVault.Object);
         }

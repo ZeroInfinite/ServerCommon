@@ -467,7 +467,7 @@ namespace NuGet.Services.Entities.Tests
                     () => _packageRegistration.IsAcceptableSigningCertificate(thumbprint));
 
                 Assert.Equal("thumbprint", exception.ParamName);
-                Assert.StartsWith("The argument cannot be null or empty.", exception.Message);
+                Assert.StartsWith("The argument cannot be null or empty.", exception.Message, StringComparison.Ordinal);
             }
 
             [Fact]

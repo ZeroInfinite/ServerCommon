@@ -63,7 +63,7 @@ namespace NuGet.Services.KeyVault
 
             do
             {
-                foundIndex = input.IndexOf(_frame, startIndex, StringComparison.InvariantCulture);
+                foundIndex = input.IndexOf(_frame, startIndex, StringComparison.Ordinal);
 
                 if (insideFrame && foundIndex > 0)
                 {

@@ -163,7 +163,7 @@ namespace NuGet.Services.Storage
         protected string GetName(Uri uri)
         {
             var address = Uri.UnescapeDataString(BaseAddress.GetLeftPart(UriPartial.Path));
-            if (!address.EndsWith("/"))
+            if (!address.EndsWith("/", StringComparison.Ordinal))
             {
                 address += "/";
             }
@@ -174,7 +174,7 @@ namespace NuGet.Services.Storage
             var name = uriString.Substring(baseAddressLength);
             if (name.Contains("#"))
             {
-                name = name.Substring(0, name.IndexOf("#"));
+                name = name.Substring(0, name.IndexOf("#", StringComparison.Ordinal));
             }
             return name;
         }
@@ -182,7 +182,7 @@ namespace NuGet.Services.Storage
         protected Uri GetUri(string name)
         {
             string address = BaseAddress.ToString();
-            if (!address.EndsWith("/"))
+            if (!address.EndsWith("/", StringComparison.Ordinal))
             {
                 address += "/";
             }

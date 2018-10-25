@@ -35,7 +35,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 var exception = Assert.Throws<TypeInitializationException>(runConstructor);
 
                 Assert.Equal(typeof(InvalidOperationException), exception.InnerException.GetType());
-                Assert.Contains($"{nameof(UnSchematizedType)} must have exactly one {nameof(SchemaAttribute)}", exception.InnerException.Message);
+                Assert.Contains($"{nameof(UnSchematizedType)} must have exactly one {nameof(SchemaAttribute)}", exception.InnerException.Message, StringComparison.Ordinal);
             }
         }
 
@@ -87,7 +87,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 // Act & Assert
                 var exception = Assert.Throws<FormatException>(() =>
                     _target.Deserialize(brokeredMessage.Object));
-                Assert.Contains($"The provided message should have {SchemaNameKey} property '{SchemaName}'.", exception.Message);
+                Assert.Contains($"The provided message should have {SchemaNameKey} property '{SchemaName}'.", exception.Message, StringComparison.Ordinal);
             }
 
             [Fact]
@@ -100,7 +100,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 // Act & Assert
                 var exception = Assert.Throws<FormatException>(() =>
                     _target.Deserialize(brokeredMessage.Object));
-                Assert.Contains($"The provided message should have {SchemaVersionKey} property '23'.", exception.Message);
+                Assert.Contains($"The provided message should have {SchemaVersionKey} property '23'.", exception.Message, StringComparison.Ordinal);
             }
 
             [Fact]
@@ -113,7 +113,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 // Act & Assert
                 var exception = Assert.Throws<FormatException>(() =>
                     _target.Deserialize(brokeredMessage.Object));
-                Assert.Contains($"The provided message does not have a {SchemaNameKey} property.", exception.Message);
+                Assert.Contains($"The provided message does not have a {SchemaNameKey} property.", exception.Message, StringComparison.Ordinal);
             }
 
             [Fact]
@@ -126,7 +126,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 // Act & Assert
                 var exception = Assert.Throws<FormatException>(() =>
                     _target.Deserialize(brokeredMessage.Object));
-                Assert.Contains($"The provided message does not have a {SchemaVersionKey} property.", exception.Message);
+                Assert.Contains($"The provided message does not have a {SchemaVersionKey} property.", exception.Message, StringComparison.Ordinal);
             }
 
             [Fact]
@@ -139,7 +139,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 // Act & Assert
                 var exception = Assert.Throws<FormatException>(() =>
                     _target.Deserialize(brokeredMessage.Object));
-                Assert.Contains($"The provided message contains a {SchemaNameKey} property that is not a string.", exception.Message);
+                Assert.Contains($"The provided message contains a {SchemaNameKey} property that is not a string.", exception.Message, StringComparison.Ordinal);
             }
 
             [Fact]
@@ -152,7 +152,7 @@ namespace NuGet.Services.ServiceBus.Tests
                 // Act & Assert
                 var exception = Assert.Throws<FormatException>(() =>
                     _target.Deserialize(brokeredMessage.Object));
-                Assert.Contains($"The provided message contains a {SchemaVersionKey} property that is not an integer.", exception.Message);
+                Assert.Contains($"The provided message contains a {SchemaVersionKey} property that is not an integer.", exception.Message, StringComparison.Ordinal);
             }
 
             private static Mock<IBrokeredMessage> GetBrokeredMessage()

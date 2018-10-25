@@ -81,7 +81,7 @@ namespace NuGet.Services.Sql
             AccessTokenCacheValue accessToken,
             string clientCertificateData)
         {
-            return !accessToken.ClientCertificateData.Equals(clientCertificateData, StringComparison.InvariantCulture);
+            return !accessToken.ClientCertificateData.Equals(clientCertificateData, StringComparison.Ordinal);
         }
 
         private bool TokenExpiresIn(IAuthenticationResult token, double expirationInMinutes)
