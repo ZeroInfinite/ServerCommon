@@ -2,7 +2,6 @@
   "dependencies": {
     "Microsoft.Owin": "3.0.1",
     "Moq": "4.10.0",
-    "System.ValueTuple": "4.3.1",
     "xunit": "2.4.0",
     "xunit.runner.visualstudio": "2.4.0"
   },

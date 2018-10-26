@@ -61,14 +61,14 @@ namespace NuGet.Services.KeyVault.Tests
         }
 
         [Theory]
-        [MemberData("_testFormatParameters")]
+        [MemberData(nameof(_testFormatParameters))]
         public async Task TestFormat(string input, string expectedOutput)
         {
             // Act
             string formattedString = await _secretInjector.InjectAsync(input);
 
             // Assert
-            formattedString.ShouldBeEquivalentTo(expectedOutput);
+            formattedString.Should().BeEquivalentTo(expectedOutput);
         }
     }
 }

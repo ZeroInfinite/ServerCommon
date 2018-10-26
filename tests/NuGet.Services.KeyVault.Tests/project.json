@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "FluentAssertions": "4.9.0",
+    "FluentAssertions": "5.4.2",
     "Moq": "4.10.0",
     "xunit": "2.4.0",
     "xunit.runner.visualstudio": "2.4.0"
