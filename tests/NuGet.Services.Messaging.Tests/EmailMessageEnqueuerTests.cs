@@ -25,9 +25,9 @@ namespace NuGet.Services.Messaging.Tests
         public class FactBase
         {
 
-            public readonly Mock<ILogger<EmailMessageEnqueuer>> _logger;
-            public readonly Mock<IServiceBusMessageSerializer> _serializer;
-            public readonly Mock<ITopicClient> _topicClient;
+            public Mock<ILogger<EmailMessageEnqueuer>> _logger;
+            public Mock<IServiceBusMessageSerializer> _serializer;
+            public Mock<ITopicClient> _topicClient;
             public EmailMessageData _message;
 
             public FactBase()

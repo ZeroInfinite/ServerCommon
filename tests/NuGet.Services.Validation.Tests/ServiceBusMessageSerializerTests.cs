@@ -274,7 +274,7 @@ namespace NuGet.Services.Validation.Tests
 
         public abstract class Base
         {
-            protected readonly ServiceBusMessageSerializer _target;
+            protected ServiceBusMessageSerializer _target;
 
             public Base()
             {

@@ -233,7 +233,7 @@ namespace NuGet.Services.Validation.Issues.Tests
             }
         }
 
-        public static readonly IDictionary<ValidationIssueCode, Func<IValidationIssue>> IssuesWithNoProperties = new Dictionary<ValidationIssueCode, Func<IValidationIssue>>
+        public static IDictionary<ValidationIssueCode, Func<IValidationIssue>> IssuesWithNoProperties = new Dictionary<ValidationIssueCode, Func<IValidationIssue>>
         {
             { ValidationIssueCode.Unknown, () => ValidationIssue.Unknown },
             { ValidationIssueCode.PackageIsSigned, () => ValidationIssue.PackageIsSigned },

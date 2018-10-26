@@ -9,7 +9,7 @@ namespace NuGet.Services.Messaging.Email
 {
     public abstract class ConfirmationEmailBuilder : MarkdownEmailBuilder
     {
-        protected readonly IMessageServiceConfiguration Configuration;
+        protected IMessageServiceConfiguration Configuration;
         protected readonly string RawConfirmationUrl;
         protected readonly bool IsOrganization;
 

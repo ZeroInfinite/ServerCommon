@@ -92,8 +92,8 @@ namespace NuGet.Services.Storage.Tests
         public class BaseFacts
         {
             protected readonly string _dirPath;
-            protected readonly AzureStorage _target;
             protected readonly Uri _resourceUri;
+            protected AzureStorage _target;
 
             public BaseFacts()
             {

@@ -11,30 +11,30 @@ namespace NuGet.Services.Messaging.Email.Tests
 {
     public abstract class MarkdownMessageBuilderFacts
     {
-        protected static readonly IMessageServiceConfiguration Configuration = new TestMessageServiceConfiguration();
+        protected static IMessageServiceConfiguration Configuration = new TestMessageServiceConfiguration();
 
         public class Fakes
         {
-            public static readonly User PackageOwnerSubscribedToPackagePushedNotification
+            public static User PackageOwnerSubscribedToPackagePushedNotification
                 = new User("subscribedToPushNotification")
                 {
                     EmailAddress = "subscribed.packageOwner@gallery.org",
                     NotifyPackagePushed = true
                 };
-            public static readonly User PackageOwnerNotSubscribedToPackagePushedNotification
+            public static User PackageOwnerNotSubscribedToPackagePushedNotification
                 = new User("notSubscribedToPushNotification")
                 {
                     EmailAddress = "notSubscribed.packageOwner@gallery.org",
                     NotifyPackagePushed = false
                 };
-            public static readonly User PackageOwnerWithEmailNotAllowed
+            public static User PackageOwnerWithEmailNotAllowed
                 = new User("emailNotAllowed")
                 {
                     EmailAddress = "emailNotAllowed.packageOwner@gallery.org",
                     NotifyPackagePushed = false,
                     EmailAllowed = false
                 };
-            public static readonly User PackageOwnerWithEmailAllowed
+            public static User PackageOwnerWithEmailAllowed
                 = new User("emailAllowed")
                 {
                     EmailAddress = "emailAllowed.packageOwner@gallery.org",
@@ -42,7 +42,7 @@ namespace NuGet.Services.Messaging.Email.Tests
                     EmailAllowed = true
                 };
 
-            public static readonly Package Package = new Package
+            public static Package Package = new Package
             {
                 PackageRegistration = new PackageRegistration
                 {
@@ -63,7 +63,7 @@ namespace NuGet.Services.Messaging.Email.Tests
                 Version = "1.0.0"
             };
 
-            public static readonly SymbolPackage SymbolPackage = new SymbolPackage
+            public static SymbolPackage SymbolPackage = new SymbolPackage
             {
                 Package = Package
             };
@@ -88,22 +88,22 @@ namespace NuGet.Services.Messaging.Email.Tests
             };
             public static IEnumerable<string> WarningMessages = new List<string> { "Warning message" };
             public const string PreviousEmailAddress = "previousAddress@gallery.org";
-            public static readonly MailAddress FromAddress = new MailAddress("sender@gallery.org", "Sender");
-            public static readonly User RequestingUser = new User("requestingUser") { EmailAddress = "requestUser@gallery.org", EmailAllowed = true };
-            public static readonly User OrganizationAdmin = new User("organizationAdmin")
+            public static MailAddress FromAddress = new MailAddress("sender@gallery.org", "Sender");
+            public static User RequestingUser = new User("requestingUser") { EmailAddress = "requestUser@gallery.org", EmailAllowed = true };
+            public static User OrganizationAdmin = new User("organizationAdmin")
             {
                 EmailAddress = "organizationAdmin@gallery.org",
                 EmailAllowed = true
             };
-            public static readonly Organization RequestingOrganization = new Organization("requestingOrganization")
+            public static Organization RequestingOrganization = new Organization("requestingOrganization")
             {
                 EmailAddress = "requestOrganization@gallery.org",
                 EmailAllowed = true
             };
-            public static readonly User UnconfirmedUser = new User("unconfirmedUser") { UnconfirmedEmailAddress = "unconfirmedUser@gallery.org" };
-            public static readonly Organization UnconfirmedOrganization = new Organization("unconfirmedOrganization") { UnconfirmedEmailAddress = "unconfirmedOrganization@gallery.org" };
+            public static User UnconfirmedUser = new User("unconfirmedUser") { UnconfirmedEmailAddress = "unconfirmedUser@gallery.org" };
+            public static Organization UnconfirmedOrganization = new Organization("unconfirmedOrganization") { UnconfirmedEmailAddress = "unconfirmedOrganization@gallery.org" };
 
-            public static readonly Membership OrganizationMembership = new Membership
+            public static Membership OrganizationMembership = new Membership
             {
                 Member = RequestingUser,
                 Organization = RequestingOrganization

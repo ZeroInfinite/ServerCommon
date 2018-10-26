@@ -174,7 +174,7 @@ namespace NuGet.Services.ServiceBus.Tests
 
         public abstract class Base
         {
-            protected readonly BrokeredMessageSerializer<SchematizedType> _target;
+            protected BrokeredMessageSerializer<SchematizedType> _target;
 
             public Base()
             {

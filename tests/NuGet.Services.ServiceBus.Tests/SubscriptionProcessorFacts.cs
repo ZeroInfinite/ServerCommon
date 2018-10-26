@@ -242,13 +242,13 @@ namespace NuGet.Services.ServiceBus.Tests
 
         public abstract class Base
         {
-            protected readonly Mock<ISubscriptionClient> _client;
-            protected readonly Mock<IBrokeredMessageSerializer<TestMessage>> _serializer;
-            protected readonly Mock<IMessageHandler<TestMessage>> _handler;
-            protected readonly Mock<ISubscriptionProcessorTelemetryService> _telemetryService;
-            protected readonly SubscriptionProcessor<TestMessage> _target;
+            protected Mock<ISubscriptionClient> _client;
+            protected Mock<IBrokeredMessageSerializer<TestMessage>> _serializer;
+            protected Mock<IMessageHandler<TestMessage>> _handler;
+            protected Mock<ISubscriptionProcessorTelemetryService> _telemetryService;
+            protected SubscriptionProcessor<TestMessage> _target;
 
-            protected readonly Mock<IBrokeredMessage> _brokeredMessage;
+            protected Mock<IBrokeredMessage> _brokeredMessage;
 
             public Base()
             {

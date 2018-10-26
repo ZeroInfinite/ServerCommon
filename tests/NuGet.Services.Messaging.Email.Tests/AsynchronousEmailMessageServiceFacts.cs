@@ -12,7 +12,7 @@ namespace NuGet.Services.Messaging.Email.Tests
 {
     public class AsynchronousEmailMessageServiceFacts
     {
-        protected static readonly IMessageServiceConfiguration Configuration = new TestMessageServiceConfiguration();
+        protected static IMessageServiceConfiguration Configuration = new TestMessageServiceConfiguration();
 
         public class TheConstructor
         {
