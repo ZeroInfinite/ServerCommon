@@ -1,8 +1,8 @@
 ﻿{
   "dependencies": {
-    "Moq": "4.5.23",
+    "Moq": "4.10.0",
     "SerilogTraceListener": "2.0.10027",
-    "xunit": "2.1.0",
+    "xunit": "2.4.0",
     "xunit.runner.visualstudio": "2.4.0"
   },
   "frameworks": {
